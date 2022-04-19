@@ -1,5 +1,4 @@
-/* ======================== */
-/* Reset and set up styles  */
+/* ======================== Reset and set up styles ======================== */
 html{
   font-size: 62.5%;
 }
@@ -26,11 +25,14 @@ html{
   --ff-serif: 'Bellefair', serif;
   --ff-sans-cond: 'Barlow Condensed', sans-serif;
   --ff-sans-normal: 'Barlow', sans-serif;
+
+  /* letter-spacing */
+  --ls-400: 2.35px;
+  --ls-500: 2.7px;
+  --ls-600: 4.75px;
 }
 
-/* ======================== */
-/* ======================== */
-/* Reset and set up styles  */
+/* ======================== Reset and set up styles ========================*/
 
 *,
 *::before,
@@ -93,10 +95,9 @@ select {
     scroll-behavior: auto !important;
   }
 }
-/* ======================== */
-/* ======================== */
-/*      Utility classes     */
 
+/*======================== Utility classes ========================*/
+/*====== General======*/
 .grid{
   display: grid;
   gap: var(--gap);
@@ -107,10 +108,14 @@ select {
   gap: var(--gap);
 }
 
+.flow > *:where(:not(:first-child)){
+  margin-block-start: var(--flow-space, 1rem);  
+}
+
 .container{
   padding-inline: 2em;
   margin-inline: auto;
-  max-width: 80rem; /*the value its relative to the project */
+  max-width: 112.9rem; /*the value its relative to the project */
 }
 
 /* hide the Element but it remains in the DOM */
@@ -126,6 +131,8 @@ select {
   border: 0;
 }
 
+/*====== color ======*/
+
 .bg-dark { background-color: rgb( var(--clr-dark) );}
 .bg-accent { background-color: rgb( var(--clr-accent) );}
 .bg-light { background-color: rgb( var(--clr-light) );}
@@ -134,7 +141,7 @@ select {
 .text-accent { color: rgb( var(--clr-accent) );}
 .text-light { color: rgb( var(--clr-light) );}
 
-/* typography */
+/*====== typography ======*/
 
 .ff-serif { font-family: var(--ff-serif); } 
 .ff-sans-cond { font-family: var(--ff-sans-cond); } 
@@ -155,9 +162,60 @@ select {
 .fs-300 { font-size: var(--fs-300); }
 .fs-200 { font-size: var(--fs-200); }
 
+.ls-400 { letter-spacing: var(--ls-400);}
+.ls-500 { letter-spacing: var(--ls-500);}
+.ls-600 { letter-spacing: var(--ls-600);}
+
 .fs-900,
 .fs-800,
 .fs-700,
 .fs-600 {
     line-height: 1.1;
+}
+
+/*============================= micro-utility-classes =============================*/
+
+.numbered-title{
+  font-size: var(--fs-500);
+  font-family: var(--ff-sans-cond);
+  letter-spacing: var(--ls-600);
+  text-transform: uppercase;
+}
+
+.numbered-title > span{
+  color: rgb( var(--clr-light) / .25);
+  margin-inline-end: .5em;
+  font-weight: bold;
+}
+
+/* ------------------- */
+/* Components          */
+/* ------------------- */
+
+.large-button{
+  display: grid;
+  position: relative;
+  padding: 0 2em;
+  place-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+.large-button::before{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width:  100%;
+  height: 100%;
+  background-color: rgb( var(--clr-light) / .13);
+  opacity: 0;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s linear;
+}
+
+.large-button:hover::before,
+.large-button:focus::before{
+  opacity: 1;
+  transform: scale(1.3);
 }
