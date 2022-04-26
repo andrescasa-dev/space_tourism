@@ -193,7 +193,7 @@ select {
 /* ------------------- */
 
 .large-button{
-  display: grid;
+  display: inline-grid;
   margin-block-start: 50px;
   position: relative;
   padding: 0 2em;
@@ -303,3 +303,10 @@ select {
   border: 1px solid rgb( var(--clr-light) / 1);
 }
 
+.logo-wrapper{
+  flex-grow: 1;
+}
+
+.nav{
+  flex-grow: 1;
+}
