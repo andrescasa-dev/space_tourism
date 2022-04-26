@@ -12,14 +12,15 @@ html{
   --clr-light: 249 249 249;
 
   /*font-size*/
+
   --fs-200: 1.4rem;
   --fs-300: 1.6rem;
-  --fs-400: 1.8rem; /*base font size*/ 
+  --fs-400: 1.46rem; /*base font size*/ 
   --fs-500: 2.8rem;
-  --fs-600: 3.2rem;     
-  --fs-700: 5.6rem;
-  --fs-800: 10rem;
-  --fs-900: 15rem;
+  --fs-600: 1.6rem;     
+  --fs-700: 2.4rem;
+  --fs-800: 5.6rem;
+  --fs-900: 8.0rem;
   
   /* font-family */
   --ff-serif: 'Bellefair', serif;
@@ -31,6 +32,32 @@ html{
   --ls-500: 2.7px;
   --ls-600: 4.75px;
 }
+
+/* Tablets */
+@media (min-width: 375px) {
+  :root{
+    --fs-400: 1.6rem; /*base font size*/ 
+    --fs-600: 2.4rem;     
+    --fs-700: 4.0rem;
+    --fs-800: 8.0rem;
+    --fs-900: 15rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 760px) {
+  :root{
+    --fs-200: 1.4rem;
+    --fs-300: 1.6rem;
+    --fs-400: 1.8rem; /*base font size*/ 
+    --fs-500: 2.8rem;
+    --fs-600: 3.2rem;     
+    --fs-700: 5.6rem;
+    --fs-800: 10rem;
+    --fs-900: 15rem;
+  }
+}
+
 
 /* ======================== Reset and set up styles ========================*/
 
@@ -70,6 +97,9 @@ body {
   background: rgb( var(--clr-dark) );
   color: rgb( var(--clr-light) );
   line-height: 1.5;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 img,
@@ -116,6 +146,27 @@ select {
   padding-inline: 2em;
   margin-inline: auto;
   max-width: 112.9rem; /*the value its relative to the project */
+}
+
+.grid-container{
+  display: grid;
+  
+}
+
+
+@media (min-width: 760px) {
+ .grid-container{
+  column-gap: var(--container-gap, 2rem);
+  grid-template-columns: minmax(2em, 1fr) repeat(2, 50rem) minmax(2em, 1fr);
+ }
+
+ .grid-container > *:first-child{
+  grid-column: 2;
+  }
+
+  .grid-container > *:last-child{
+    grid-column: 3;
+  }
 }
 
 /* hide the Element but it remains in the DOM */
