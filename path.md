@@ -21,3 +21,6 @@ Some important things to reset or set before begin. guide: [Modern reset css](ht
 
 ## 3. colors
 use rgb or hsl to modify opacity, save the common color in a custom variable (but only content of the rgb or hsl). 
+
+# Developing components
+## 1. interactive components

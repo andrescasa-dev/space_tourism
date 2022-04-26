@@ -90,7 +90,13 @@
         <h2 class="numbered-title"><span>03</span> Interactive elements</h2>
         
         <!-- navigation -->
-        <div></div>
+        <div>
+            <ul class="primary-navigation flex underline-indicators uppercase ff-sans-cond ls-500 fs-300">
+                <li class="active"><a class="text-light" href="#"><span>00</span> Active</a></li>
+                <li><a class="text-light" href="#"><span>01</span> Hovered</a></li>
+                <li><a class="text-light" href="#"><span>02</span> Idle</a></li>
+            </ul>
+        </div>
         
         <div class="flex">
             <div>
@@ -98,14 +104,27 @@
                 <a href="#" class="large-button uppercase bg-light ff-serif fs-600 text-dark">Explore</a>
             </div> 
             
-            <div style="margin-bottom: 50vh">
+            <div class="flow" style="margin-bottom: 50vh; margin-left: 28rem;  --flow-space: 10rem;">
                 <!-- Tabs -->
-                
-                
+                <div class="tab-list underline-indicators flex">
+                    <button aria-selected="true" class="bg-dark uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond">Moon</button>
+                    <button aria-selected="false" class="bg-dark uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond">Mars</button>
+                    <button aria-selected="false" class="bg-dark uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond">Europa</button>
+                </div>
+                 
                 <!-- Dots -->
-                
+                <div class="dot-indicators flex">
+                    <button aria-selected="true"><span class="sr-only">Slide title</span> </button>
+                    <button aria-selected="false"><span class="sr-only">Slide title</span> </button>
+                    <button aria-selected="false"><span class="sr-only">Slide title</span> </button>
+                </div>
                 
                 <!-- Numbers -->
+                <div class="flow number-indicators">
+                    <button aria-selected="true" class="bg-dark text-light ff-serif">1</button>
+                    <button aria-selected="false" class="bg-dark text-light ff-serif">2</button>
+                    <button aria-selected="false" class="bg-dark text-light ff-serif">3</button>
+                </div>
             </div>
         </div>
         
