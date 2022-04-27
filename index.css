@@ -21,6 +21,7 @@ html{
   --fs-700: 2.4rem;
   --fs-800: 5.6rem;
   --fs-900: 8.0rem;
+  --fs-900: clamp(8.0rem, 10vw + 1rem, 15rem);
   
   /* font-family */
   --ff-serif: 'Bellefair', serif;
@@ -40,7 +41,6 @@ html{
     --fs-600: 2.4rem;     
     --fs-700: 4.0rem;
     --fs-800: 8.0rem;
-    --fs-900: 15rem;
   }
 }
 
@@ -54,7 +54,6 @@ html{
     --fs-600: 3.2rem;     
     --fs-700: 5.6rem;
     --fs-800: 10rem;
-    --fs-900: 15rem;
   }
 }
 
@@ -130,16 +129,20 @@ select {
 /*====== General======*/
 .grid{
   display: grid;
-  gap: var(--gap);
+  gap: var(--gap, 1.6rem);
 }
 
 .flex{
   display: flex;
-  gap: var(--gap);
+  gap: var(--gap, 1.6rem);
+}
+
+.d-block{
+  display: block;
 }
 
 .flow > *:where(:not(:first-child)){
-  margin-block-start: var(--flow-space, 1rem);  
+  margin-block-start: var(--flow-space, 1.6rem);  
 }
 
 .container{
@@ -149,23 +152,22 @@ select {
 }
 
 .grid-container{
-  display: grid;
-  
+  display: grid; 
 }
-
 
 @media (min-width: 760px) {
  .grid-container{
-  column-gap: var(--container-gap, 2rem);
-  grid-template-columns: minmax(2em, 1fr) repeat(2, 50rem) minmax(2em, 1fr);
+  column-gap: var(--container-gap, 3.2rem);
+  grid-template-columns: minmax(3.2rem, 1fr) repeat(2, minmax(0,50rem)) minmax(3.2em, 1fr);
  }
 
  .grid-container > *:first-child{
-  grid-column: 2;
+    grid-column: 2;
   }
 
   .grid-container > *:last-child{
     grid-column: 3;
+    
   }
 }
 
@@ -245,7 +247,6 @@ select {
 
 .large-button{
   display: inline-grid;
-  margin-block-start: 50px;
   position: relative;
   padding: 0 2em;
   place-items: center;
@@ -274,7 +275,7 @@ select {
 
 .primary-navigation{
   --gap: 4em;
-  --underline-gap: 2rem;
+  --underline-gap: 3.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -289,9 +290,9 @@ select {
 }
 
 .underline-indicators > *{
-  padding-block-end: var(--underline-gap, 1rem);
+  padding-block-end: var(--underline-gap, 1.6rem);
   border: 0;
-  border-bottom: 2px solid rgb( var(--clr-light) / 0);
+  border-bottom: 0.32rem solid rgb( var(--clr-light) / 0);
   cursor: pointer;
 }
 
@@ -312,7 +313,7 @@ select {
 }
 
 .dot-indicators{
-  --gap: 2rem;
+  --gap: 3.2rem;
 }
 
 .dot-indicators > *{
