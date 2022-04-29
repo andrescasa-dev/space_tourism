@@ -160,7 +160,7 @@ select {
   display: grid; 
   row-gap: 18%;
   text-align: center;
-  place-content: center;
+  place-items: center;
   margin: 0 2em;
 }
 
@@ -170,7 +170,7 @@ select {
 
 @media (min-width: 769px) {
  .grid-container{
-  column-gap: var(--container-gap, 20.8rem);
+  column-gap: var(--container-gap, 15vw);
   grid-template-columns: minmax(1.6rem, 1fr) repeat(2, minmax(0,50rem)) minmax(1.6rem, 1fr);
   text-align: left;
   justify-items: center;
@@ -187,7 +187,7 @@ select {
 
   .home .grid-container{
     align-content: end;
-    /* it was added the possibility of chose between rem and vh if the 9.6rem is bigger means that the user has a longer screen than expected, in that case de rem (a fixed - dev unit) should be use. */
+    /* if the 9.6rem is bigger means that the user has a longer screen than expected, in that case de rem (a fixed - dev unit) should be use. */
     padding-block-end: max(9.6rem, 20vh);
   }
   
@@ -264,6 +264,8 @@ select {
   font-weight: bold;
 }
 
+
+
 /* ------------------- */
 /* Components          */
 /* ------------------- */
@@ -298,19 +300,26 @@ select {
   transform: scale(1.3);
 }
 
-header{
-  padding: 2em;
+.primary-header{
   position: relative;
   z-index: 1;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
 .primary-navigation {
-  --underline-gap: 2rem;
+  --underline-gap: 3.9rem;
   list-style: none;
-  padding: 0;
   margin: 0;
   background: rgb( var(--clr-dark) / 0.95);
+}
+
+.primary-navigation a{
+  text-decoration: none;
+}
+
+.primary-navigation a > span{
+  font-weight: 700;
 }
 
 @supports (backdrop-filter: blur(2rem)){
@@ -320,8 +329,17 @@ header{
   }
 }
 
+.mobile-nav-toggle{
+  display: none;
+}
+
+.logo{
+  margin-block: 2rem;
+  margin-inline: clamp(2.4rem, 7vw, 5.5rem);
+}
+
 /* This affect only mobile screen, because i'm adding complexity its cumbersome apply mobile first and re-write all the new properties to delete them*/
-@media (max-width: 375px) {
+@media (max-width: 560px) {
   .primary-navigation{
     position: fixed;
     z-index: 0;
@@ -334,7 +352,6 @@ header{
     list-style: none;
     transform: translateX(100%);
     transition: transform .5s ease-in;
-    
   }
 
   .primary-navigation[data-isVisible="true"]{
@@ -356,6 +373,7 @@ header{
   }
   
   .mobile-nav-toggle{
+    display: inline-block;
     position: absolute;
     z-index: 1;
     top: 3.2rem;
@@ -368,12 +386,47 @@ header{
     aspect-ratio: 1;
   }
 }
+@media (min-width: 560px) {
+  .primary-navigation{
+    --gap: clamp(1.5rem, 7vw, 7rem);
+    padding: 0 clamp(7rem, 10vw, 16.7rem) 0 clamp(3rem, 4vw, 10rem);
+  }
+}
+@media (min-width: 560px) and (max-width: 766.99px) {
+  .primary-navigation{
+    padding: 0 4rem 0 4rem;
+  }
+
+  .primary-navigation a > span{
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  .primary-navigation{
+    margin-block: 4rem;
+  }
+
+  .primary-header::after{
+    content: "";
+    position: relative;
+    background-color: rgb( var(--clr-light) / .25);
+    height: 1px;
+    width: 100%;
+    margin-right: -3.7rem;
+    order: 1;
+  }
+  .primary-header nav {
+    order: 2;
+  }
+}
 
 .underline-indicators > *{
   padding-block: var(--underline-gap, 1.6rem);
   border: 0;
   border-bottom: 0.32rem solid rgb( var(--clr-light) / 0);
   cursor: pointer;
+  min-width: max-content;
 }
 
 .underline-indicators > *:hover,
@@ -388,15 +441,6 @@ header{
   color: rgb( var(--clr-light) );
 }
 
-
-
-.primary-navigation a{
-  text-decoration: none;
-}
-
-.primary-navigation a > span{
-  font-weight: 700;
-}
 
 
 
