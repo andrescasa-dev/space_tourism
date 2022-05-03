@@ -12,6 +12,7 @@
   <title>Space tourism</title>
 </head>
 <body class="home">
+  <a href="#main" class="skip-to-content bg-light text-dark fs-400">Skip to content</a>
   <header class="flex primary-header">
     <div> 
       <img class="logo" src="./assets/shared/logo.svg" alt="space tourism logo">
@@ -21,14 +22,14 @@
     </button>
     <nav>
       <ul id="primary-navigation" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
-          <li class="active"><a class="text-light" href="#"><span>00</span> Home</a></li>
-          <li><a class="text-light" href="#"><span>01</span> Destination</a></li>
-          <li><a class="text-light" href="#"><span>02</span> Crew</a></li>
-          <li><a class="text-light" href="#"><span>03</span> Technology</a></li>
+          <li class="active"><a class="text-light" href="#"><span aria-hidden="true">00</span> Home</a></li>
+          <li><a class="text-light" href="#"><span aria-hidden="true">01</span> Destination</a></li>
+          <li><a class="text-light" href="#"><span aria-hidden="true">02</span> Crew</a></li>
+          <li><a class="text-light" href="#"><span aria-hidden="true">03</span> Technology</a></li>
       </ul>
     </nav>
   </header>
-  <main class="grid-container">
+  <main id="main" class="grid-container">
     <div>
       <h1 class="fs-500 uppercase text-accent ff-sans-cond letter-spacing-1">So, you want to travel to
         <span class="d-block fs-900 uppercase text-light ff-serif">Space</span>
@@ -42,6 +43,5 @@
       <a href="#" class="large-button uppercase bg-light ff-serif text-dark">Explore</a>
     </div>
   </main>
-  
 </body>
 </html>

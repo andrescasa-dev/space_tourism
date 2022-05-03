@@ -24,3 +24,8 @@ use rgb or hsl to modify opacity, save the common color in a custom variable (bu
 
 # Developing components
 ## 1. interactive components
+## 2. dev layouts
+## 3. check accessibility.
+  * what should be hidden for the aria-API (aria-hidden="true") but displayed
+  * what should be not displayed but expose to the aria-API (use class="sr-only")
+  * Maybe use "chromevox" for test accessibility, at less for blind people.
