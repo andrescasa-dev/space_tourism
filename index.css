@@ -16,7 +16,7 @@ html{
   --fs-200: 1.4rem;
   --fs-300: 1.6rem;
   --fs-400: 1.46rem; /*base font size*/ 
-  --fs-500: 2.8rem;
+  --fs-500: 1.6rem;
   --fs-600: 1.6rem;     
   --fs-700: 2.4rem;
   --fs-800: 5.6rem;
@@ -38,7 +38,8 @@ html{
 @media (min-width: 375px) {
   :root{
     --fs-400: 1.6rem; /*base font size*/ 
-    --fs-600: 2.4rem;     
+    --fs-600: 2.4rem;
+    --fs-500: 2rem;     
     --fs-700: 4.0rem;
     --fs-800: 8.0rem;
   }
@@ -515,6 +516,9 @@ select {
   border: 1px solid rgb( var(--clr-light) / 1);
 }
 
+.destination-info{
+  justify-content: center;
+}
 
 
 /* ----------------------------- */
