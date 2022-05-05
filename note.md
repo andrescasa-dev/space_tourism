@@ -26,3 +26,8 @@ this is the actual solution:
 }
 ``` 
 **aspect-ratio: 1 / 1** ensure that it's going to have same width and same height regardless of the width text.
+
+
+# inheritance in css custom variables
+custom variables inherits its values.
+![](https://i.postimg.cc/xjP6CBHV/Screenshot-from-2022-05-05-09-24-27.png)
