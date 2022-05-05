@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;1,600&family=Barlow:wght@300;400;500&family=Bellefair&display=swap" rel="stylesheet">
+  <script src="./index.js" defer></script>
+  <title>Space tourism</title>
+</head>
+<body class="crew">
+  <a href="#main" class="skip-to-content bg-light text-dark fs-400">Skip to content</a>
+  <header class="flex primary-header">
+    <div> 
+      <img class="logo" src="./assets/shared/logo.svg" alt="space tourism logo">
+    </div>
+    <button id="mobile-nav-toggle" aria-expanded="false" class="mobile-nav-toggle" aria-controls="primary-navigation" >
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav>
+      <ul id="primary-navigation" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
+          <li class=""><a class="text-light" href="#"><span aria-hidden="true">00</span> Home</a></li>
+          <li><a class="text-light" href="#"><span aria-hidden="true">01</span> Destination</a></li>
+          <li><a class="text-light active" href="#"><span aria-hidden="true">02</span> Crew</a></li>
+          <li><a class="text-light" href="#"><span aria-hidden="true">03</span> Technology</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" class="grid-container grid-container-crew flow">
+    <h1 class="numbered-title"><span aria-hidden="true">02</span>Meet your crew</h1>
+    <img src="assets/crew/image-douglas-hurley.png" alt="">
+    <div class="dot-indicators flex">
+      <button aria-selected="true"><span class="sr-only">The commander</span></button>
+      <button aria-selected="false"><span class="sr-only">The mission specialist</span></button>
+      <button aria-selected="false"><span class="sr-only">The pilot</span></button>
+      <button aria-selected="false"><span class="sr-only">The crew engineer</span></button>
+    </div>
+    <h2 class="text-light ff-serif fs-700 uppercase"><span class="d-block fs-600">Commander</span>Douglas Hurley</h2>
+    <p class="text-accent">Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
+      and former NASA astronaut. He launched into space for the third time as 
+      commander of Crew Dragon Demo-2.</p>
+  </main>
+  
+</body>
+</html>
