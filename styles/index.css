@@ -423,7 +423,7 @@ select {
 }
 
 .underline-indicators > .active,
-.underline-indicators > [aria-selected="true"]{
+.underline-indicators > *[aria-selected="true"]{
   border-color: rgb( var(--clr-light));
   color: rgb( var(--clr-light) );
 }
@@ -489,56 +489,56 @@ body{
 }
 
 .home{
-  background-image: url(assets/home/background-home-mobile.jpg);
+  background-image: url(../assets/home/background-home-mobile.jpg);
 }
 
 /* Tablets */
 @media (min-width: 560px) {
   .home{
-    background-image: url(assets/home/background-home-tablet.jpg);
+    background-image: url(../assets/home/background-home-tablet.jpg);
   }
 }
 
 /* Desktop */
 @media (min-width: 769px) {
   .home{
-    background-image: url(assets/home/background-home-desktop.jpg);
+    background-image: url(../assets/home/background-home-desktop.jpg);
   }
 }
 
 /* destination */
 .destination {
-  background-image: url(./assets/destination/background-destination-mobile.jpg);
+  background-image: url(../assets/destination/background-destination-mobile.jpg);
 }
 
 @media (min-width: 35rem) {
   .destination {
       background-position: center center;
-      background-image: url(./assets/destination/background-destination-tablet.jpg);
+      background-image: url(../assets/destination/background-destination-tablet.jpg);
   }
 }
 
 @media (min-width: 45rem) {
   .destination {
-      background-image: url(./assets/destination/background-destination-desktop.jpg);
+      background-image: url(../assets/destination/background-destination-desktop.jpg);
   }
 } 
 
 /* crew */
 .crew {
-  background-image: url(./assets/home/background-crew-mobile.jpg);
+  background-image: url(../assets/home/background-crew-mobile.jpg);
 }
 
 @media (min-width: 35rem) {
   .crew {
       background-position: center center;
-      background-image: url(./assets/crew/background-crew-tablet.jpg);
+      background-image: url(../assets/crew/background-crew-tablet.jpg);
   }
 }
 
 @media (min-width: 45rem) {
   .crew {
-      background-image: url(./assets/crew/background-crew-desktop.jpg);
+      background-image: url(../assets/crew/background-crew-desktop.jpg);
   }
 } 
 
@@ -578,9 +578,9 @@ body{
 }
 
 .destination-meta{
-  margin-top: 3rem;
+  margin-top: 2.8rem;
   border-top: 1px solid rgb( var(--clr-light) / .25);
-  padding-top: 3rem;
+  padding-top: 2.8rem;
   flex-direction: column;
 }
 .destination-meta p{

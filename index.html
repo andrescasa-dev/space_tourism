@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./styles/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;1,600&family=Barlow:wght@300;400;500&family=Bellefair&display=swap" rel="stylesheet">
-  <script src="./index.js" defer></script>
+  <script src="./scripts/navigation.js" defer></script>
   <title>Space tourism</title>
 </head>
 <body class="home">
@@ -21,11 +21,11 @@
       <span class="sr-only">Menu</span>
     </button>
     <nav>
-      <ul id="primary-navigation" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
-          <li class="active"><a class="text-light" href="#"><span aria-hidden="true">00</span> Home</a></li>
-          <li><a class="text-light" href="#"><span aria-hidden="true">01</span> Destination</a></li>
-          <li><a class="text-light" href="#"><span aria-hidden="true">02</span> Crew</a></li>
-          <li><a class="text-light" href="#"><span aria-hidden="true">03</span> Technology</a></li>
+      <ul id="primary-navigation" role="tablist" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
+        <li role="tab" class="active"><a class="text-light" href="./index.html"><span aria-hidden="true">00</span> Home</a></li>
+        <li role="tab"><a class="text-light" href="./destination.html"><span aria-hidden="true">01</span> Destination</a></li>
+        <li role="tab"><a class="text-light" href="./crew.html"><span aria-hidden="true">02</span> Crew</a></li>
+        <li role="tab"><a class="text-light" href="#"><span aria-hidden="true">03</span> Technology</a></li>
       </ul>
     </nav>
   </header>
