@@ -197,6 +197,7 @@ select {
 .bg-dark { background-color: rgb( var(--clr-dark) );}
 .bg-accent { background-color: rgb( var(--clr-accent) );}
 .bg-light { background-color: rgb( var(--clr-light) );}
+.bg-none { background: none;}
 
 .text-dark { color: rgb( var(--clr-dark) );}
 .text-accent { color: rgb( var(--clr-accent) );}
@@ -505,6 +506,43 @@ body{
   }
 }
 
+/* destination */
+.destination {
+  background-image: url(./assets/destination/background-destination-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+  .destination {
+      background-position: center center;
+      background-image: url(./assets/destination/background-destination-tablet.jpg);
+  }
+}
+
+@media (min-width: 45rem) {
+  .destination {
+      background-image: url(./assets/destination/background-destination-desktop.jpg);
+  }
+} 
+
+/* crew */
+.crew {
+  background-image: url(./assets/home/background-crew-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+  .crew {
+      background-position: center center;
+      background-image: url(./assets/crew/background-crew-tablet.jpg);
+  }
+}
+
+@media (min-width: 45rem) {
+  .crew {
+      background-image: url(./assets/crew/background-crew-desktop.jpg);
+  }
+} 
+
+
 /* ----------------------------- */
 /* Layout                        */
 /* ----------------------------- */
@@ -550,22 +588,46 @@ body{
 }
 
 .grid-container-crew{
-  --flow-space: 2rem;
+  --flow-space: 3rem;
+}
+
+.grid-container-crew > h1{
+  grid-area: title;
+}
+
+.grid-container-crew > article{
+  grid-area: info;
+}
+
+.grid-container-crew > div[class*="dot-indicators"]{
+  grid-area: dots;
 }
 
 .grid-container-crew > img{
+  grid-area: image;
   max-width: 60%;
   border-bottom: 1px solid rgb( var(--clr-light) / .25);
 }
 
-.grid-container-crew > h2 span{
+.grid-container-crew{
+  grid-template-areas:
+  'title'
+  'image'
+  'dots'
+  'info';
+}
+
+.crew-info span{
   color: rgb( var(--clr-light) / .5);
-  margin-bottom: .8rem;
+  margin-bottom: .7em;
 }
 
 @media (min-width: 560px) {
-  .numbered-title{
+  .grid-container{
     margin-top: 2rem;
+  }
+
+  .numbered-title{
     justify-self: start;
   }
 
@@ -574,41 +636,38 @@ body{
     justify-content: space-evenly;
   }
 
-  .grid-container-crew > h2{
+  .grid-container-crew > article{
     margin-top: 5rem;
-    order: 1;
-  }
-
-  .grid-container-crew > p{
-    order: 2;
   }
   
-  .grid-container-crew > div[class*="dot-indicators"]{
-    order: 3;
+  .grid-container-crew{
+    padding-bottom: 0;
+    grid-template-areas:
+    'title'
+    'info'
+    'dots'
+    'image';
   }
 
-  .grid-container-crew > img{
-    order: 4;
-  }
-
-  .dot-indicators{
-    padding: 3.5em;
+  .dot-indicators *{
+    padding: .4em;
   }
 }
 
 @media (min-width: 769px) {
   .grid-container{
-    column-gap: var(--container-gap, 2rem);
+    column-gap: var(--container-gap, 7rem);
     grid-template-columns: minmax(1.6rem, 1fr) repeat(2, minmax(0,50rem)) minmax(1.6rem, 1fr);
     text-align: left;
     justify-items: center;
+    margin-top: 3rem;
   }
 
-  .grid-container > *:first-child{
+  .grid-container-home > *:first-child{
     grid-column: 2;
   }
 
-  .grid-container > *:last-child{
+  .grid-container-home > *:last-child{
     grid-column: 3;
   }
 
@@ -634,6 +693,7 @@ body{
   }
 
   .grid-container-destiantion > img {
+    justify-self: center;
     max-width: 80%;
     min-width: 28rem;
   }
@@ -652,37 +712,23 @@ body{
     --gap: min( 7vw + 1rem, 10rem);
   }
 
-  .grid-container-crew > h1{
-    margin-top: 5rem;
-    grid-area: title;
-  }
-
-  .grid-container-crew > h2{
-    margin-top: 5rem;
-    grid-area: sub;
-  }
-
-  .grid-container-crew > p{
-    outline: 1px solid green;
-    grid-area: text;
-  }
-  
-  .grid-container-crew > div[class*="dot-indicators"]{
-    grid-area: dots;
+  .grid-container-crew > article{
+    align-self: end;
   }
 
   .grid-container-crew > img{
-    grid-area: image;
+    justify-self: end;
+    align-self: end;
+    max-width: 90%;
+    min-width: 26rem;
   }
-  
- 
   .grid-container-crew{
     justify-items: start;
     align-content: start;
     grid-template-areas:
     '. title image. '
-    '. sub image .'
-    '. text image .'
+    '. info image .'
+    '. info image .'
     '. dots image .';
   }
 }
