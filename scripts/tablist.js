@@ -116,18 +116,28 @@ const distance = document.getElementById('distance');
 const travelTime = document.getElementById('travelTime');
 const tabList = document.getElementById('tab-list');
 
-const destinationData = jsonData.destinations;
+const destinationElemnts = [title, picture, content, distance, travelTime];
 
-const loadDestination = (i) => {
-  title.textContent = destinationData[i].name;
+const getSection = (event) => {
+  const section = event.path.find((element) => element.tagName === "body").className;
 
-  picture.firstElementChild.srcset = destinationData[i].images.webp;
-  picture.lastElementChild.src = destinationData[i].images.png;
-  picture.lastElementChild.alt = destinationData[i].name;
+}
 
-  content.textContent = destinationData[i].description;
-  distance.textContent = destinationData[i].distance;
-  travelTime.textContent = destinationData[i].travel;
+const loadSection = (sectionKey, i) => {
+  //Determinar sección: guardar en que sección estoy y con eso acceder al objeto
+  //Según la sección son los elementos que se actualizan
+  //========PENDIENTE: terminar de generalizar la función, funciona con tabs y ahora quiero que funcione con dots===///
+  sectionData = jsonData[sectionKey];
+  
+  destinationElemnts[0].textContent = destinationData[i].name;
+
+  destinationElemnts[1].firstElementChild.srcset = sectionData[i].images.webp;
+  destinationElemnts[1].lastElementChild.src = sectionData[i].images.png;
+  destinationElemnts[1].lastElementChild.alt = sectionData[i].name;
+
+  destinationElemnts[2].textContent = sectionData[i].description;
+  destinationElemnts[3].textContent = sectionData[i].distance;
+  destinationElemnts[4].textContent = sectionData[i].travel;
 }
 
 const getButtonSelected = (event) =>{
@@ -143,9 +153,10 @@ const getButtonSelected = (event) =>{
 
 const sectionSelected = (event) => {
   let buttonSelected = getButtonSelected(event);
+  const section = event.path.find((element) => element.tagName === "body").className;
   if(buttonSelected){
     let i = buttonSelected.getAttribute('data-index');
-    loadDestination(i);
+    loadSection(section, i);
     resetTabActive();
     buttonSelected.ariaSelected = "true";
   }
