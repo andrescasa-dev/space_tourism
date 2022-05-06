@@ -565,7 +565,7 @@ body{
   --flow-space: 3rem;
 }
 
-.grid-container-destiantion > img {
+.grid-container-destiantion > picture {
   max-width: 40%;
 }
 
@@ -603,7 +603,7 @@ body{
   grid-area: dots;
 }
 
-.grid-container-crew > img{
+.grid-container-crew > picture{
   grid-area: image;
   max-width: 60%;
   border-bottom: 1px solid rgb( var(--clr-light) / .25);
@@ -680,7 +680,7 @@ body{
     grid-area: title;
   }
   
-  .grid-container-destiantion > img{
+  .grid-container-destiantion > picture{
     grid-area: image;
   }
 
@@ -692,7 +692,7 @@ body{
     grid-area: info;
   }
 
-  .grid-container-destiantion > img {
+  .grid-container-destiantion > picture {
     justify-self: center;
     max-width: 80%;
     min-width: 28rem;
@@ -716,7 +716,7 @@ body{
     align-self: end;
   }
 
-  .grid-container-crew > img{
+  .grid-container-crew > picture{
     justify-self: end;
     align-self: end;
     max-width: 90%;
