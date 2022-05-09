@@ -109,20 +109,26 @@ const jsonData = {
 
 
 ///////////////////////////////////////////////////////
-const picture = document.getElementById('picture');
-const title = document.getElementById('title');
-const content = document.getElementById('content');
-const distance = document.getElementById('distance');
-const travelTime = document.getElementById('travelTime');
-const tabList = document.getElementById('tab-list');
+//deberian solo ser obtenidos cuando esté en destination.
 
-const destinationElements = [title, picture, content, distance, travelTime];
 
-const getSection = (event) => {
-  const section = event.path.find((element) => element.tagName === "body").className;
 
+const destinationTab = document.getElementById('tab-list');
+const tabList = [document.getElementById('tab-list'), document.getElementById('tab-dots')];
+let elementsToModify = null;
+
+const obtainDestinationElements = ()=>{
+  const picture = document.getElementById('picture');
+  const title = document.getElementById('title');
+  const content = document.getElementById('content');
+  const distance = document.getElementById('distance');
+  const travelTime = document.getElementById('travelTime');
+  elementsToModify = [title, picture, content, distance, travelTime];
 }
 
+const loadElements = (section) => {
+  if(section === "destinations") obtainDestinationElements();
+}
 
 /**
  * 
@@ -133,7 +139,7 @@ const loadSection = (sectionKey, i) => {
   let sectionData = jsonData[sectionKey];
   let sourceData = Object.entries(sectionData[i]);
   
-  destinationElements.forEach( (element, j) => {
+  elementsToModify.forEach( (element, j) => {
     if( sourceData[j][0] === 'images'){
       element.lastElementChild.src = sourceData[j][1].png;
       element.firstElementChild.srcset = sourceData[j][1].webp;
@@ -145,21 +151,31 @@ const loadSection = (sectionKey, i) => {
   });
 }
 
-const getButtonSelected = (event) =>{
-  let buttonSelected = null;
-  if(event.type === 'click') buttonSelected = event.target;
-  if(event.type === 'keydown'){
-    let actual = tabList.querySelector('*[aria-selected = true]');
-    if(event.code === "ArrowRight") buttonSelected = actual.nextElementSibling;
-    if(event.code === "ArrowLeft") buttonSelected = actual.previousElementSibling;
-  }
-  return buttonSelected;
-}
 
-const sectionSelected = (event) => {
-  let buttonSelected = getButtonSelected(event);
+
+
+
+function sectionSelected(event){
+  //this: elemento donde se dió click
+  const getButtonSelected = () =>{
+    let buttonSelected = null; //this: undefined
+    if(event.type === 'click') buttonSelected = event.target;
+    if(event.type === 'keydown'){
+      let actual = this.querySelector('*[aria-selected = true]'); 
+      if(event.code === "ArrowRight") buttonSelected = actual.nextElementSibling;
+      if(event.code === "ArrowLeft") buttonSelected = actual.previousElementSibling;
+    }
+    return buttonSelected;
+  }
+  const resetTabActive = () => {
+    const buttons = Array.from(this.children); //this: undefined
+    buttons.forEach( button => { button.ariaSelected = "false" });
+  }
+
   const body = event.path.find((element) => element.tagName === "BODY");
   const section = body.className;
+  loadElements(section);
+  let buttonSelected = getButtonSelected();
   if(buttonSelected){
     let i = buttonSelected.getAttribute('data-index'); //section index
     loadSection(section, i);
@@ -168,11 +184,19 @@ const sectionSelected = (event) => {
   }
 }
 
-const resetTabActive = () => {
-  const buttons = Array.from(tabList.children);
-  buttons.forEach( button => { button.ariaSelected = "false" });
+tabList.forEach((tabElement)=>{
+  if(tabElement !== null){
+    tabElement.addEventListener('click', sectionSelected);
+    tabElement.addEventListener('keydown', sectionSelected);
+  }
+})
+
+///test///
+const logo = document.getElementById('logo');
+logo.addEventListener('click', 
+function showThis(){
+  'use strict';
+  debugger;
+  console.log('el this: ' , this);
 }
-
-tabList.addEventListener('click', sectionSelected);
-tabList.addEventListener('keydown', sectionSelected);
-
+);
