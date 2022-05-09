@@ -26,8 +26,8 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 ```
-
 ## when to use "<article>" HTML tag?
 
-
 ## how works this in js? 
+
+## how works :focus in css?

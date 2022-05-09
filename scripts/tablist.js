@@ -116,28 +116,33 @@ const distance = document.getElementById('distance');
 const travelTime = document.getElementById('travelTime');
 const tabList = document.getElementById('tab-list');
 
-const destinationElemnts = [title, picture, content, distance, travelTime];
+const destinationElements = [title, picture, content, distance, travelTime];
 
 const getSection = (event) => {
   const section = event.path.find((element) => element.tagName === "body").className;
 
 }
 
+
+/**
+ * 
+ * @param {string} sectionKey the name of the section, ej "destination"
+ * @param {number} i the index of the tab which it's going to load.
+ */
 const loadSection = (sectionKey, i) => {
-  //Determinar sección: guardar en que sección estoy y con eso acceder al objeto
-  //Según la sección son los elementos que se actualizan
-  //========PENDIENTE: terminar de generalizar la función, funciona con tabs y ahora quiero que funcione con dots===///
-  sectionData = jsonData[sectionKey];
+  let sectionData = jsonData[sectionKey];
+  let sourceData = Object.entries(sectionData[i]);
   
-  destinationElemnts[0].textContent = destinationData[i].name;
-
-  destinationElemnts[1].firstElementChild.srcset = sectionData[i].images.webp;
-  destinationElemnts[1].lastElementChild.src = sectionData[i].images.png;
-  destinationElemnts[1].lastElementChild.alt = sectionData[i].name;
-
-  destinationElemnts[2].textContent = sectionData[i].description;
-  destinationElemnts[3].textContent = sectionData[i].distance;
-  destinationElemnts[4].textContent = sectionData[i].travel;
+  destinationElements.forEach( (element, j) => {
+    if( sourceData[j][0] === 'images'){
+      element.lastElementChild.src = sourceData[j][1].png;
+      element.firstElementChild.srcset = sourceData[j][1].webp;
+      element.lastElementChild.alt = sourceData[0][1];
+    }
+    else{
+      element.textContent = sourceData[j][1];
+    }
+  });
 }
 
 const getButtonSelected = (event) =>{
@@ -153,9 +158,10 @@ const getButtonSelected = (event) =>{
 
 const sectionSelected = (event) => {
   let buttonSelected = getButtonSelected(event);
-  const section = event.path.find((element) => element.tagName === "body").className;
+  const body = event.path.find((element) => element.tagName === "BODY");
+  const section = body.className;
   if(buttonSelected){
-    let i = buttonSelected.getAttribute('data-index');
+    let i = buttonSelected.getAttribute('data-index'); //section index
     loadSection(section, i);
     resetTabActive();
     buttonSelected.ariaSelected = "true";
