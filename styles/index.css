@@ -450,7 +450,7 @@ select {
   background-color: rgb( var(--clr-light) / .5);
 }
 
-.dot-indicators > [aria-selected="true"]{
+.dot-indicators > *[aria-selected="true"]{
   background-color: rgb( var(--clr-light) / 1);
 }
 
@@ -506,19 +506,19 @@ body{
 }
 
 /* destination */
-.destination {
+.destinations {
   background-image: url(../assets/destination/background-destination-mobile.jpg);
 }
 
 @media (min-width: 35rem) {
-  .destination {
+  .destinations {
       background-position: center center;
       background-image: url(../assets/destination/background-destination-tablet.jpg);
   }
 }
 
 @media (min-width: 45rem) {
-  .destination {
+  .destinations {
       background-image: url(../assets/destination/background-destination-desktop.jpg);
   }
 } 
@@ -616,9 +616,9 @@ body{
   'info';
 }
 
-.crew-info span{
+.crew-info :first-child{
   color: rgb( var(--clr-light) / .5);
-  margin-bottom: .7em;
+  margin-bottom: -.7em;
 }
 
 @media (min-width: 560px) {

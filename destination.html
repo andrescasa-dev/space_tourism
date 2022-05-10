@@ -22,7 +22,7 @@
       <span class="sr-only">Menu</span>
     </button>
     <nav>
-      <ul id="primary-navigation" role="tablist" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
+      <ul id="primary-navigation" data-isVisible="false" class="primary-navigation flex text-light underline-indicators uppercase ff-sans-cond ls-500 fs-300">
           <li role="tab"><a class="text-light" href="./index.html"><span aria-hidden="true">00</span> Home</a></li>
           <li role="tab" class="active"><a class="text-light" href="./destination.html"><span aria-hidden="true">01</span> Destination</a></li>
           <li role="tab"><a class="text-light" href="./crew.html"><span aria-hidden="true">02</span> Crew</a></li>
@@ -32,20 +32,20 @@
   </header>
   <main id="main" class="grid-container grid-container-destiantion flow">
     <h1 class="numbered-title"><span aria-hidden="true">01</span>   Pick your destination</h1>
-    <picture id="picture">
+    <picture id="images">
       <source srcset="./assets/destination/image-moon.webp" type="image/webp">
       <img src="./assets/destination/image-moon.png" alt="moon">
     </picture>
-    <div id="tab-list" class="tab-list underline-indicators flex">
-      <button data-index="0" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="true">Moon</button>
-      <button data-index="1" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Mars</button>
-      <button data-index="2" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Europa</button>
-      <button data-index="3" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Titan</button>
+    <div id="tab-list" role="tablist" class="tab-list underline-indicators flex">
+      <button data-index="0" role="tab" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="true">Moon</button>
+      <button data-index="1" role="tab" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Mars</button>
+      <button data-index="2" role="tab" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Europa</button>
+      <button data-index="3" role="tab" class="bg-none uppercase text-accent fs-300 letter-spacing-2 ff-sans-cond" aria-selected="false">Titan</button>
     </div>
     <article class="destination-info">
       <div>
-        <h2 id="title"  class="text-light fs-800 ff-serif uppercase">Moon</h2>
-        <p id="content" class="text-accent">See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.</p>
+        <h2 id="name"  class="text-light fs-800 ff-serif uppercase">Moon</h2>
+        <p id="description" class="text-accent">See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.</p>
       </div>
       <div class="destination-meta flex">
         <div>
@@ -54,7 +54,7 @@
         </div>
         <div>
           <h3 class="text-accent uppercase ff-sans-cond fs-200">Est. travel time</h3>
-          <p id="travelTime" class="text-light uppercase ff-serif">3 days</p>
+          <p id="travel" class="text-light uppercase ff-serif">3 days</p>
         </div>
       </div>
     </article>

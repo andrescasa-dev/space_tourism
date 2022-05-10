@@ -107,38 +107,35 @@ const jsonData = {
   ]
 };
 
-
 ///////////////////////////////////////////////////////
-//deberian solo ser obtenidos cuando esté en destination.
+//3 ways to do that.
+//Using arrow functions and this.
+//Using bind.
+//Using functional programing.
 
-
-
-const destinationTab = document.getElementById('tab-list');
-const tabList = [document.getElementById('tab-list'), document.getElementById('tab-dots')];
-let elementsToModify = null;
-
-const obtainDestinationElements = ()=>{
-  const picture = document.getElementById('picture');
-  const title = document.getElementById('title');
-  const content = document.getElementById('content');
-  const distance = document.getElementById('distance');
-  const travelTime = document.getElementById('travelTime');
-  elementsToModify = [title, picture, content, distance, travelTime];
-}
-
-const loadElements = (section) => {
-  if(section === "destinations") obtainDestinationElements();
-}
-
+const tabList = document.querySelectorAll('[role="tablist"]');
 /**
  * 
  * @param {string} sectionKey the name of the section, ej "destination"
  * @param {number} i the index of the tab which it's going to load.
  */
 const loadSection = (sectionKey, i) => {
+  /**
+   * 
+   * @param {entries of data} sourceData an array of p
+   */
+  const loadElementsToModify = (sourceData) => {
+    debugger;
+    sourceData.forEach((entry) => {
+      elementsToModify.push( document.getElementById(entry[0]));
+    });
+  }
+
+  let elementsToModify = [];
   let sectionData = jsonData[sectionKey];
-  let sourceData = Object.entries(sectionData[i]);
-  
+  let sourceData = Object.entries(sectionData[i]); 
+  loadElementsToModify(sourceData);
+
   elementsToModify.forEach( (element, j) => {
     if( sourceData[j][0] === 'images'){
       element.lastElementChild.src = sourceData[j][1].png;
@@ -151,14 +148,9 @@ const loadSection = (sectionKey, i) => {
   });
 }
 
-
-
-
-
 function sectionSelected(event){
-  //this: elemento donde se dió click
-  const getButtonSelected = () =>{
-    let buttonSelected = null; //this: undefined
+  const getButtonSelected = () => {
+    let buttonSelected = null;
     if(event.type === 'click') buttonSelected = event.target;
     if(event.type === 'keydown'){
       let actual = this.querySelector('*[aria-selected = true]'); 
@@ -168,17 +160,17 @@ function sectionSelected(event){
     return buttonSelected;
   }
   const resetTabActive = () => {
-    const buttons = Array.from(this.children); //this: undefined
+    const buttons = Array.from(this.children);
     buttons.forEach( button => { button.ariaSelected = "false" });
   }
-
   const body = event.path.find((element) => element.tagName === "BODY");
   const section = body.className;
-  loadElements(section);
   let buttonSelected = getButtonSelected();
+
   if(buttonSelected){
-    let i = buttonSelected.getAttribute('data-index'); //section index
+    let i = buttonSelected.getAttribute('data-index'); //index
     loadSection(section, i);
+    debugger;
     resetTabActive();
     buttonSelected.ariaSelected = "true";
   }
